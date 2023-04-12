@@ -1,0 +1,47 @@
+{
+    "bot-account": {
+      "username": "BOTAFK",
+      "password": "",
+      "type": "offline"
+    },
+  
+    "server": {
+      "ip": "mcsmpsurvival.aternos.me",
+      "port": 18890,
+      "version": "1.19"
+    },
+  
+    "position": {
+      "enabled": false,
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+  
+    "utils": {
+      "auto-auth": {
+        "enabled": true,
+        "password": "25082008"
+      },
+  
+      "anti-afk": {
+        "enabled": true,
+        "sneak": true
+      },
+  
+      "chat-messages": {
+        "enabled": false,
+        "repeat": true,
+        "repeat-delay": 60,
+  
+        "messages": [
+          "I'm a BOT not player "
+        ]
+      },
+  
+      "mes-log": true,
+      "auto-reconnect": true,
+      "auto-recconect-delay": 1000
+    }
+  }
+  
