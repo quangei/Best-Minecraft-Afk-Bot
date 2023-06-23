@@ -2,6 +2,7 @@ const mineflayer = require('mineflayer');
 const Movements = require('mineflayer-pathfinder').Movements;
 const pathfinder = require('mineflayer-pathfinder').pathfinder;
 const { GoalBlock } = require('mineflayer-pathfinder').goals;
+const antiafk = require("mineflayer-antiafk");
 const readline = require('readline').createInterface({
     input: process.stdin,
     output: process.stdout
@@ -30,10 +31,10 @@ function createBot() {
       version: config.server.version,
    });
 
+   bot.loadPlugin(antiafk)
    bot.loadPlugin(pathfinder);
    const mcData = require('minecraft-data')(bot.version);
    const defaultMove = new Movements(bot, mcData);
-   bot.settings.colorsEnabled = false;
 
    bot.once('spawn', () => {
       console.log('\x1b[33m[BotLog] Bot joined to the server', '\x1b[0m');
@@ -83,10 +84,7 @@ function createBot() {
       }
 
       if (config.utils['anti-afk'].enabled) {
-         bot.setControlState('jump', true);
-         if (config.utils['anti-afk'].sneak) {
-            bot.setControlState('sneak', true);
-         }
+         bot.afk.start();
       }
    });
 
@@ -115,6 +113,17 @@ function createBot() {
             createBot();
          }, config.utils['auto-recconect-delay']);
       });
+   }
+
+   if (config.utils['auto-eat'].enabled) {
+      bot.afk.setOptions({ 
+         autoEatConfig: {
+            priority: "foodPoints", 
+            startAt: config.utils['auto-eat']['eat-at'], 
+            bannedFood: config.utils['auto-eat']['no-eat']
+         },
+         chatInterval: 1000
+      })
    }
 
    bot.on('kicked', (reason) =>

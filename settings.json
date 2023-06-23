@@ -6,9 +6,9 @@
     },
   
     "server": {
-      "ip": "mcsmpsurvival.aternos.me",
-      "port": 18890,
-      "version": "1.19"
+      "ip": "192.168.1.10",
+      "port": 63314,
+      "version": "1.18.2"
     },
   
     "position": {
@@ -20,12 +20,12 @@
   
     "utils": {
       "auto-auth": {
-        "enabled": true,
+        "enabled": false,
         "password": "25082008"
       },
   
       "anti-afk": {
-        "enabled": true,
+        "enabled": false,
         "sneak": true
       },
   
@@ -37,6 +37,12 @@
         "messages": [
           "I'm a BOT not player "
         ]
+      },
+
+      "auto-eat": {
+        "enabled": false,
+        "eat-at": 16,
+        "no-eat": ["golden_apple", "enchanted_golden_apple"]
       },
   
       "mes-log": true,
